@@ -7,7 +7,6 @@ if (window.attachEvent) {
 }
 
 function startPlugin() {
-  console.log("INICIOU");
   searchContainer(window.frames[4]);
 }
 
@@ -74,7 +73,6 @@ function searchContainer(frame) {
     frame,
     "html body form table tbody tr td input"
   );
-  console.log("INPUT BUSCA", searchInput);
   searchInput = searchInput[4];
   searchInput.style.backgroundColor = "#b0b1b1";
   searchInput.style.borderRadius = "100px";
