@@ -1,0 +1,15 @@
+{
+  "name": "IF Library",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "plugin to change IF library UI",
+  "content_scripts": [
+    {
+      "js": ["init.js"],
+      "css": ["styles.css"],
+      "matches": [
+        "http://biblioteca.barbacena.ifsudestemg.edu.br/cgi-bin/wxis.exe?IsisScript=phl82.xis&lang=por&cipar=phl82.cip"
+      ]
+    }
+  ]
+}
