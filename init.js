@@ -1,3 +1,13 @@
+const colors = {
+  green: "#2F9E41",
+  white: "#fff",
+  grey: "#b0b1b1",
+  greyLight: "#EEEFEF",
+  blueDark: "#153F69",
+};
+
+const font = "sans-serif";
+
 if (window.attachEvent) {
   window.attachEvent("onload", startPlugin);
 } else if (window.addEventListener) {
@@ -7,6 +17,7 @@ if (window.attachEvent) {
 }
 
 function startPlugin() {
+  console.log("PASSOU");
   searchContainer(window.frames[4]);
 }
 
@@ -19,15 +30,33 @@ function getElements(frame, query) {
 }
 
 function searchContainer(frame) {
+  console.log("PASSOU 2");
   // tbody
   const tbody = getElement(frame, "html body form table tbody");
   tbody.style.display = "flex";
   tbody.style.flexDirection = "column-reverse";
   tbody.style.width = "100%";
   tbody.style.justifyContent = "center";
-  tbody.style.backgroundColor = "#fff";
+  tbody.style.backgroundColor = colors.greyLight;
   tbody.style.borderRadius = "6px";
   tbody.style.padding = "4rem 2rem";
+  tbody.style.border = "none";
+
+  // Title
+  var title = document.createElement("h1");
+  title.style.background = "transparent";
+  title.style.fontSize = "28px";
+  title.style.color = colors.blueDark;
+  title.style.fontFamily = font;
+  title.style.marginTop = "4rem";
+  title.style.textAlign = "center";
+  title.style.width = "100%";
+  title.style.border = "none";
+  title.style.fontWeight = "bolder";
+
+  var text = document.createTextNode("Procurando por algo específico?");
+  title.appendChild(text);
+  tbody.appendChild(title);
 
   // tr
   const rows = getElements(frame, "html body form table tbody tr");
@@ -60,11 +89,11 @@ function searchContainer(frame) {
   searchButton.style.flexDirection = "column";
   searchButton.style.alignItems = "center";
   searchButton.style.border = "none";
-  searchButton.style.backgroundColor = "#2F9E41";
+  searchButton.style.backgroundColor = colors.green;
   searchButton.style.borderRadius = "12px";
-  searchButton.style.color = "#fff";
+  searchButton.style.color = colors.white;
   searchButton.style.fontSize = "22px";
-  searchButton.style.fontFamily = "sans-serif";
+  searchButton.style.fontFamily = font;
   searchButton.style.padding = "10px 30px";
   searchButton.style.margin = "30px 0";
 
@@ -74,13 +103,13 @@ function searchContainer(frame) {
     "html body form table tbody tr td input"
   );
   searchInput = searchInput[4];
-  searchInput.style.backgroundColor = "#b0b1b1";
+  searchInput.style.backgroundColor = colors.grey;
   searchInput.style.borderRadius = "100px";
   searchInput.style.padding = "15px";
   searchInput.style.display = "flex";
   searchInput.style.justifyContent = "center";
   searchInput.style.border = "none";
-  searchInput.style.color = "#fff";
+  searchInput.style.color = colors.white;
   searchInput.style.fontStyle = "italic";
   searchInput.style.fontSize = "18px";
   searchInput.style.textAlign = "center";
