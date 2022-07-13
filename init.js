@@ -17,20 +17,30 @@ if (window.attachEvent) {
 }
 
 function startPlugin() {
-  console.log("PASSOU");
   searchContainer(window.frames[4]);
 }
 
+/**
+ *
+ * @param {Object} frame window.frames[] -> frame que contém os elementos em que for trabalhar
+ * @param {String} query Argumento passado para o querySelector para obter o elemento desejado (igual ao CSS)
+ * @returns Retorna o elemento encontrado
+ */
 function getElement(frame, query) {
   return frame.document.querySelector(query);
 }
 
+/**
+ *
+ * @param {Object} frame window.frames[] -> frame que contém os elementos em que for trabalhar
+ * @param {String} query Argumento passado para o querySelector para obter o elemento desejado (igual ao CSS)
+ * @returns Retorna os elementos encontrados
+ */
 function getElements(frame, query) {
   return frame.document.querySelectorAll(query);
 }
 
 function searchContainer(frame) {
-  console.log("PASSOU 2");
   // tbody
   const tbody = getElement(frame, "html body form table tbody");
   tbody.style.display = "flex";
@@ -115,6 +125,4 @@ function searchContainer(frame) {
   searchInput.style.textAlign = "center";
   searchInput.style.marginBottom = "15px";
   searchInput.setAttribute("placeholder", "Faça uma consulta em nosso acervo");
-
-  searchInput.setAttribute("id", "search-input");
 }
