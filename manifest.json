@@ -3,10 +3,17 @@
   "version": "0.0.1",
   "manifest_version": 3,
   "description": "plugin to change IF library UI",
+  "web_accessible_resources": [
+    {
+      "resources": ["bg-image.png", "icon-menu.png", "logo-if.png"],
+      "matches": ["http://biblioteca.barbacena.ifsudestemg.edu.br/*"]
+    }
+  ],
   "content_scripts": [
     {
       "js": ["init.js"],
       "css": ["styles.css"],
+      "run_at": "document_idle",
       "matches": [
         "http://biblioteca.barbacena.ifsudestemg.edu.br/cgi-bin/wxis.exe?IsisScript=phl82.xis&cipar=phl82.cip&lang=por"
       ]
