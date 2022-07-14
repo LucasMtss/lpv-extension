@@ -173,7 +173,7 @@ function searchPageTexts(frame) {
   footer.style.padding = "2rem";
   footer.style.color = colors.white;
   footer.style.display = "flex";
-  footer.style.justifyContent = "space-beetwen";
+  footer.style.justifyContent = "space-between";
   footer.style.boxSizing = "border-box";
   footer.style.alignItems = "flex-end";
   footer.style.height = "50%";
@@ -226,7 +226,7 @@ function searchPageTexts(frame) {
   const body = getElement(frame, "html body");
   body.style.display = "flex";
   body.style.flexDirection = "column";
-  body.style.justifyContent = "space-beetwen";
+  body.style.justifyContent = "space-between";
   body.style.margin = "0";
   body.style.padding = "0";
   body.style.background = `${colors.blueDark} url(${bgImage}) no-repeat right top fixed`;
@@ -258,6 +258,11 @@ function header(frame) {
   icon.setAttribute("src", menuIcon);
   icon.style.cursor = "pointer";
 
+  // Container title
+  const containerTitle = document.createElement("div");
+  containerTitle.style.display = "flex";
+  containerTitle.style.alignItems = "center";
+
   // Title
   const title = document.createElement("h1");
   title.style.color = colors.white;
@@ -265,6 +270,10 @@ function header(frame) {
   title.innerHTML = "Biblioteca Roberval Cardoso";
   title.style.backgroundColor = "transparent";
   title.style.border = "none";
+  title.style.margin = "0";
+
+  containerTitle.appendChild(logo);
+  containerTitle.appendChild(title);
 
   // Header
   const header = document.createElement("header");
@@ -274,12 +283,33 @@ function header(frame) {
   header.style.boxSizing = "border-box";
   header.style.color = "#fff";
   header.style.display = "flex";
-  header.style.justifyContent = "space-beetwen";
+  header.style.justifyContent = "space-between";
   header.style.alignItems = "center";
 
+  // login button
+  const loginButton = document.createElement("a");
+  loginButton.style.backgroundColor = colors.green;
+  loginButton.style.color = colors.white;
+  loginButton.style.fontSize = "24px";
+  loginButton.style.fontWeight = "bold";
+  loginButton.style.fontFamily = font;
+  loginButton.style.padding = "10px 20px";
+  loginButton.style.border = "none";
+  loginButton.style.borderRadius = "18px";
+  loginButton.style.textDecoration = "none";
+  loginButton.style.cursor = "pointer";
+  loginButton.style.boxShadow =
+    "box-shadow: 0px 18px 24px 12px rgba(0,0,0,0.48)";
+  loginButton.innerHTML = "Login";
+  loginButton.setAttribute(
+    "href",
+    "/cgi-bin/wxis.exe?IsisScript=phl82/021.xis&opc=form_login&tmp=/tmp/filevH45PT&counter=488479"
+  );
+  loginButton.setAttribute("taget", "menu");
+
   header.appendChild(icon);
-  header.appendChild(logo);
-  header.appendChild(title);
+  header.appendChild(containerTitle);
+  header.appendChild(loginButton);
 
   header.lastChild = title;
 
