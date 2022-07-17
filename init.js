@@ -7,6 +7,7 @@ const colors = {
 };
 
 const font = "sans-serif";
+let hiddenMenu = true;
 
 if (window.attachEvent) {
   window.attachEvent("onload", startPlugin);
@@ -17,9 +18,16 @@ if (window.attachEvent) {
 }
 
 function startPlugin() {
+  header(window.frames[1]);
+  containerLogo(window.frames[2]);
+  menu(window.frames[3]);
+  window.frames[3].close();
+  window.frames[3].resizeTo(0, 0);
+  window.frames[3].frameElement.style.display = "none !important";
+
   searchContainer(window.frames[4]);
   searchPageTexts(window.frames[4]);
-  header(window.frames[4]);
+  newHeader(window.frames[4]);
 }
 
 /**
@@ -43,11 +51,16 @@ function getElements(frame, query) {
 }
 
 function searchContainer(frame) {
+  // Main conatiner
+  const mainContainer = getElement(frame, "html");
+  mainContainer.style.width = "100vw";
+
   // Form
   const form = getElement(frame, "html body form");
   form.style.boxSizing = "border-box";
-  form.style.width = "100%";
+  form.style.width = "clac(100% - 40px)";
   form.style.borderRadius = "12px";
+  form.style.margin = "0 20px";
 
   // Table
   const statusTable = getElement(frame, "html body table");
@@ -236,7 +249,7 @@ function searchPageTexts(frame) {
   body.appendChild(footer);
 }
 
-function header(frame) {
+function newHeader(frame) {
   const browser = window.browser || window.chrome;
   const menuIcon = browser.runtime.getURL("icon-menu.png");
 
@@ -315,4 +328,83 @@ function header(frame) {
 
   const firstChild = body.firstChild;
   body.insertBefore(header, firstChild);
+}
+
+function containerLogo(frame) {
+  const browser = window.browser || window.chrome;
+
+  // container logo
+  const body = getElement(frame, "html body");
+  body.style.display = "flex";
+  body.style.justifyContent = "center";
+  body.style.alignItems = "center";
+  body.style.backgroundColor = colors.greyLight;
+
+  // image
+  const logo = getElement(frame, "html body center img");
+  const logoUrl = browser.runtime.getURL("logo-if.png");
+  logo.setAttribute("src", logoUrl);
+  logo.style.height = "80%";
+}
+
+function menu(frame) {
+  // container menu
+  const containerMenu = getElement(frame, "html body");
+  containerMenu.style.backgroundColor = colors.greyLight;
+  containerMenu.style.paddingTop = "50px";
+
+  const containerText = getElement(frame, "html body div");
+  containerText.style.backgroundColor = colors.green;
+  containerText.style.padding = "15px 0";
+  containerText.style.width = "90%";
+  containerText.style.margin = "0 auto";
+  containerText.style.borderRadius = "8px";
+
+  const acquisitionText = getElement(frame, "html body div center a");
+  acquisitionText.style.backgroundColor = "transparent";
+  acquisitionText.style.fontSize = "18px";
+  acquisitionText.style.fontFamily = font;
+  acquisitionText.style.cursor = "pointer";
+
+  const totalAccessContainer = getElements(frame, "html body center");
+  totalAccessContainer[1].style.fontSize = "18px";
+  totalAccessContainer[1].style.fontFamily = font;
+  totalAccessContainer[1].style.color = "#333";
+  totalAccessContainer[1].style.marginTop = "25px";
+
+  const numberOfAccess = getElement(frame, "html body center div");
+  numberOfAccess.style.backgroundColor = "transparent";
+  numberOfAccess.style.color = colors.green;
+  numberOfAccess.style.fontSize = "18px";
+  numberOfAccess.style.fontFamily = font;
+  numberOfAccess.style.margin = "15px 0";
+
+  getElement(frame, "html body center i").style.display = "none";
+  totalAccessContainer[2].style.display = "none";
+}
+
+function header(frame) {
+  // Container header
+  const containerHeader = getElement(frame, "html body");
+  containerHeader.backgroundColor = colors.grey;
+
+  // table
+  const table = getElement(frame, "html body table");
+  table.setAttribute("bgcolor", colors.green);
+
+  // nav buttons
+  const navButtons = getElements(frame, "html body table tr td .inv12");
+  navButtons.forEach((button) => {
+    button.style.backgroundColor = "transparent";
+    button.style.fontSize = "14px";
+    button.style.margin = "10px";
+  });
+  navButtons[0].innerHTML = "Buscas";
+  navButtons[2].innerHTML = "Gráficos";
+  navButtons[3].innerHTML = "Manual";
+
+  // unless links
+  navButtons[1].style.display = "none";
+  navButtons[4].style.display = "none";
+  navButtons[5].style.display = "none";
 }
