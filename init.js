@@ -162,8 +162,7 @@ function searchContainer(frame) {
   searchInput.style.fontSize = "18px";
   searchInput.style.textAlign = "center";
   searchInput.style.marginBottom = "15px";
-  searchInput.style.marginBottom =
-    "box-shadow: 0px 0px 37px 19px rgba(0,0,0,0.23)";
+  searchInput.style.boxShadow = "0px 0px 27px 12px rgba(0,0,0,0.23)";
   searchInput.setAttribute("placeholder", "Faça uma consulta em nosso acervo");
 }
 
@@ -311,18 +310,52 @@ function newHeader(frame) {
   loginButton.style.borderRadius = "18px";
   loginButton.style.textDecoration = "none";
   loginButton.style.cursor = "pointer";
-  loginButton.style.boxShadow =
-    "box-shadow: 0px 18px 24px 12px rgba(0,0,0,0.48)";
+  loginButton.style.boxShadow = "0px 18px 24px 12px rgba(0,0,0,0.48)";
   loginButton.innerHTML = "Login";
   loginButton.setAttribute(
     "href",
     "/cgi-bin/wxis.exe?IsisScript=phl82/021.xis&opc=form_login&tmp=/tmp/filevH45PT&counter=488479"
   );
-  loginButton.setAttribute("taget", "menu");
+  loginButton.setAttribute("target", "result");
 
   header.appendChild(icon);
   header.appendChild(containerTitle);
   header.appendChild(loginButton);
+
+  // login screen
+
+  loginButton.addEventListener("click", () => {
+    setTimeout(() => {
+      const link = getElement(window.frames[4], "html body link");
+      const browser = window.browser || window.chrome;
+      const styleLink = browser.runtime.getURL("styles.css");
+      link.setAttribute("href", styleLink);
+
+      const body = getElement(window.frames[4], "html body");
+      const bgImage = browser.runtime.getURL("bg-image.png");
+
+      // Inputs
+      const inputs = getElements(
+        window.frames[4],
+        "html body form table tr td input"
+      );
+      inputs[0].setAttribute("placeholder", "Login");
+      inputs[1].setAttribute("placeholder", "Senha");
+
+      // Title
+      const title = getElement(window.frames[4], "html body form div");
+      const newTitle = document.createElement("h1");
+      newTitle.innerHTML = "Identificação do usuário";
+      title.appendChild(newTitle);
+      title.setAttribute("id", "title-login");
+
+      body.style.background = `${colors.blueDark} url(${bgImage}) no-repeat right top fixed`;
+      body.style.backgroundSize = "cover";
+      body.style.maxHeight = "100vh";
+      const firstChild = body.firstChild;
+      body.insertBefore(header, firstChild);
+    }, 400);
+  });
 
   header.lastChild = title;
 
