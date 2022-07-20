@@ -8,7 +8,8 @@ body{
   background-color: #2f9e41;
   color: #fefefe;
   padding: 1rem;
-  border-radius: 3rem;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px #212121;
 }
 
 .statusBar td:first-child, .statusBar td:last-child{
