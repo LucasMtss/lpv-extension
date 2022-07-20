@@ -144,6 +144,7 @@ function searchContainer(frame) {
   searchButton.style.fontFamily = font;
   searchButton.style.padding = "10px 30px";
   searchButton.style.margin = "30px 0";
+  searchButton.addEventListener("click", () => setTimeout(ResultadoBusca, 1400));
 
   // search input
   let searchInput = getElements(
@@ -440,4 +441,27 @@ function header(frame) {
   navButtons[1].style.display = "none";
   navButtons[4].style.display = "none";
   navButtons[5].style.display = "none";
+}
+
+function ResultadoBusca(){ 
+  const link = getElement(window.frames[4], "html body link");
+  const browser = window.browser || window.chrome;
+  const styleLink = browser.runtime.getURL("results.css");
+  const frame = window.frames[4]; 
+  const tds = getElements(frame, "form tbody tr td");
+  const imagesContainers = new Array();
+  const textResults = new Array();
+
+  link.setAttribute("href", styleLink);
+
+  for(let td of tds){
+    if(td.width == "80%"){
+      textResults.push(td)
+    }else if(td.width == "20%" && td.classList.length == 0){
+      imagesContainers.push(td);
+    }
+  }
+  for (const textResult of textResults) {
+    textResult.classList.add("textResult");
+  }
 }

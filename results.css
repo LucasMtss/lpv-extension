@@ -1,0 +1,40 @@
+body{
+  background-color: #eeefef;
+  border-left: 1px solid #2f9e41;
+  padding-left: 1rem;
+}
+.textResult{
+  color: #212121;
+  padding: 2rem;
+  font-size: 0.90rem;
+}
+
+.textResult li {
+  margin: 0.25rem; 
+}
+
+.textResult p a{
+  margin: 0.25rem 1rem 0 0;
+  padding: 0.25rem 0.5rem;
+  background-color: #2f9e41;
+  color: #fefefe;
+  border-radius: 0.5rem;
+  font-weight: 700;
+}
+
+.textResult p b{
+  display: block;
+}
+
+.foto{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.foto img{
+  width: 10rem;
+  height: 10rem;
+  box-shadow: 1px 1px 7px #212121;
+}
