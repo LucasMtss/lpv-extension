@@ -3,6 +3,37 @@ body{
   border-left: 1px solid #2f9e41;
   padding-left: 1rem;
 }
+
+.statusBar{
+  background-color: #2f9e41;
+  color: #fefefe;
+  padding: 1rem;
+  border-radius: 3rem;
+}
+
+.statusBar td:first-child, .statusBar td:last-child{
+  display: flex;
+  flex-direction: row;
+}
+
+.statusBar td:last-child{
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+
+.statusBar td:first-child b{
+  font-size: 1rem;
+}
+
+.statusBar td:last-child a{
+  color: #fefefe;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-left: 1rem;
+}
+
 .textResult{
   color: #212121;
   padding: 2rem;
@@ -37,4 +68,8 @@ body{
   width: 10rem;
   height: 10rem;
   box-shadow: 1px 1px 7px #212121;
+}
+
+.ft10{
+  display: none;
 }

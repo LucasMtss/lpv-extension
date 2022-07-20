@@ -464,4 +464,13 @@ function ResultadoBusca(){
   for (const textResult of textResults) {
     textResult.classList.add("textResult");
   }
+  let tables = getElements(frame, "table")
+  for (const table of tables) {
+    if (table.width == "100%" && table.getAttribute("bgcolor") == "#e4fbc5" && table.getAttribute("align") != "center") {
+      table.classList.add("statusBar");
+    }
+    if(table.width == "100%" && table.getAttribute("bgcolor") == null ) {
+      table.style.display = "none";
+    }
+  }
 }
