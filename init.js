@@ -444,14 +444,6 @@ function header(frame) {
   navButtons[5].style.display = "none";
 }
 
-function preferenciasScreen(){
-
-  const frame = window.frames[1]; 
-  const tds = getElements(frame, "form tbody tr td");
-
-
-};
-
 function ResultadoBusca(){ 
 
   
