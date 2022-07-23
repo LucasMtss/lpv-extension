@@ -1,0 +1,342 @@
+/*
+  Importing font style Open Sans
+*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+
+/*
+  CSS reset styles
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 16px;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/*
+  CSS variables for page
+*/
+
+:root{
+  --text-color: #171616;
+  --primary-white: #F6EFEF;
+  --primary-blue: #09325B;
+  --secondary-blue: #001F21;
+  --accent-green: #2f9E41;
+  --accent-red: #CD191E;
+
+  --default-transition: all 400ms ease-in-out;
+  --default-border-radius: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.btn{
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-white);
+  border-radius: var(--default-border-radius);
+  max-width: fit-content;
+}
+
+.btn-primary{
+  background-color: var(--accent-green);
+}
+
+a{
+  text-decoration: none;
+}
+p{
+  padding: 2rem 0;
+  line-height: 1.5;
+}
+body{
+  background-color: var(--primary-white);
+  font-family: 'Open Sans', sans-serif;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: calc(100% - 2rem);
+  padding: 0 1rem;
+}
+
+.logo{
+  max-width: 8rem;
+}
+
+.logo img{
+  max-width: 8rem;
+}
+
+.navbar ul{
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar ul li{
+  padding: 0.5rem 1rem;
+  transition: var(--default-transition);
+  font-size: 1rem;
+  text-transform: capitalize;
+  border-radius: 1.5rem;
+  color: var(--primary-blue);
+}
+
+.navbar ul li:hover{
+  background-color: var(--primary-blue);
+  color: var(--primary-white);
+}
+
+.navbar ul li a{
+  text-decoration: none;
+  font-weight: 800;
+  color: inherit;
+}
+
+.about{
+  width: 100%;
+  background-image: url("../assets/images/background.png");
+  min-height: calc(100vh - 5rem);
+  overflow: hidden;
+  position: relative;
+}
+
+.rotated-panel{
+  width: 150vw;
+  height: 100vh;
+  background-color: var(--primary-white);
+  transform: rotate(-10deg) translate(-5rem, -23rem);
+}
+
+.about .content{
+  top: 0;
+  left: calc((100% - 80vw)/2);
+  width: 80vw;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  color: var(--primary-blue);
+}
+
+.content h1{
+  padding: 1rem 0;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.content-wrapper{
+  display: flex;
+}
+
+.content-wrapper .text-content{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-content p{
+  padding: 2rem 0;
+  line-height: 1.5;
+}
+
+.text-content a{
+  width: auto;
+}
+
+.content-wrapper .about-image{
+  width: 60%;
+}
+
+.content-wrapper .about-image img{
+  max-width: 100%;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.proposal{
+  position: relative;
+}
+
+.proposal .mini_cards_container{
+  top: -4rem;
+  left: calc((100% - 80vw)/2);
+  width: 80vw;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+}
+
+.mini-card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 13rem;
+  height: 10rem;
+  background-color: var(--primary-white);
+  border-radius: 1.5rem;
+  box-shadow: 0 5px 10px 0px #777;
+}
+
+.mini-card img{
+  width: 8rem;
+}
+
+.mini-card h2{
+  font-weight: 700;
+}
+
+.proposal .proposal-content{
+  padding-top: 10rem;
+  width: 80vw;
+  margin: 0 auto;
+  color: var(--primary-blue)
+}
+.title-marking{
+  height: 0.25rem;
+  width: 4.5rem;
+  background-color: var(--accent-red);
+  border-radius: 3px;
+}
+.proposal-content h1{
+  font-size: 2.75rem;
+  font-weight: 700;
+  padding: 0.5rem 0 1rem;
+  color: var(--text-color);
+}
+
+.from-to-image{
+  max-width: 100%;
+}
+
+.about-us{
+  width: 100%;
+}
+
+.about-us article{
+  width: 80vw;
+  margin: 0 auto;
+  color: var(--primary-blue);
+}
+
+.about-us-footer{
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background-image: url("../assets/images/background.png");
+  color: var(--primary-white);
+  font-weight: 700;
+}
+
+.download-section{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.download-section article{
+  width: 80vw;
+}
+
+.alert{
+  display: flex;
+  background-color: #CD191E99;
+  align-items: center;
+  justify-content: space-around;
+  gap: 2rem;
+  padding: 0 2rem;
+  font-weight: 700;
+  border-radius: var(--default-border-radius);
+  margin-top: 2rem;
+}
+
+.alert i{
+  font-size: 3rem;
+  color: var(--primary-white);
+}
+
+.download-todo-list{
+  font-weight: 700;
+  color:var(--secondary-blue);
+  border-left: 3px solid var(--secondary-blue);
+  margin: 1rem 0 2rem 2rem;
+}
+
+.download-todo-list li{
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.download-todo-list li::before{
+  content: "";
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--secondary-blue);
+  display: block;
+  margin-left: -1.80rem;
+  margin-right: 2rem;
+}
+
+.download-section a{
+  color: var(--accent-red);
+  transition: var(--default-transition);
+  margin: 0 3px;
+}
+
+.download-section a:hover{
+  text-decoration: underline;
+}
