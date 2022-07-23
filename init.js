@@ -28,6 +28,7 @@ function startPlugin() {
   searchContainer(window.frames[4]);
   searchPageTexts(window.frames[4]);
   newHeader(window.frames[4]);
+  preferenciasScreen();
 }
 
 /**
@@ -144,7 +145,7 @@ function searchContainer(frame) {
   searchButton.style.fontFamily = font;
   searchButton.style.padding = "10px 30px";
   searchButton.style.margin = "30px 0";
-  searchButton.addEventListener("click", () => setTimeout(ResultadoBusca, 1400));
+  searchButton.addEventListener("click", () => setTimeout(ResultadoBusca, 2300));
 
   // search input
   let searchInput = getElements(
@@ -443,7 +444,18 @@ function header(frame) {
   navButtons[5].style.display = "none";
 }
 
+function preferenciasScreen(){
+
+  const frame = window.frames[1]; 
+  const tds = getElements(frame, "form tbody tr td");
+
+
+};
+
 function ResultadoBusca(){ 
+
+  
+
   const link = getElement(window.frames[4], "html body link");
   const browser = window.browser || window.chrome;
   const styleLink = browser.runtime.getURL("results.css");
@@ -451,9 +463,10 @@ function ResultadoBusca(){
   const tds = getElements(frame, "form tbody tr td");
   const imagesContainers = new Array();
   const textResults = new Array();
-
+  
   link.setAttribute("href", styleLink);
 
+   /*Modifica a aparência da barra de status e das imagens de capa dos livros*/
   for(let td of tds){
     if(td.width == "80%"){
       textResults.push(td)
@@ -461,11 +474,65 @@ function ResultadoBusca(){
       imagesContainers.push(td);
     }
   }
+
+
   for (const textResult of textResults) {
     textResult.classList.add("textResult");
   }
-  let tables = getElements(frame, "table")
-  for (const table of tables) {
+
+
+  let tables = getElements(frame, "table");
+
+  for (const table of tables) { 
+    /*Modifica a aparência da barra de busca*/ 
+    if (table.width == "100%" && table.getAttribute("bgcolor") == "#e4fbc5" && table.getAttribute("align") == "center"){
+      
+      table.rows[2].display = "none";
+      
+      table.classList.add("searchBar");
+  
+      let searchInput2 = getElements(frame, "html body form table tbody tr td input");
+
+      for(var e of searchInput2){
+
+         if(e.getAttribute("type")=="text" && e.getAttribute("size")=="70"){
+            e.setAttribute("placeholder", "Digite o nome do livro desejado");
+            e.style.borderRadius = "5px";
+            e.style.boxShadow ="1px 1px 5px #212121";
+          }
+        
+          if(e.getAttribute("type")=="submit" && e.getAttribute("name")=="submitter"){
+            e.style.backgroundColor = "#006699";
+            e.style.color = "#fefefe";
+            e.style.borderRadius = "5px";
+            e.style.boxShadow ="1px 1px 5px #212121";
+            e.style.display = "relative";
+            
+          }
+          
+        }
+
+        let e3 = getElements(frame, "html body form table tbody tr td");
+        e3[3].style.margin = "0px";
+        e3[3].style.textAlign = "right";
+
+        let e2 = getElements(frame, "html body form table tbody tr td a");
+        e2[0].style.color = "#006699";
+        e2[0].style.fontWeight="700";
+        e2[0].style.fontSize = "1rem";
+        e2[0].style.marginLeft = "1rem";
+        e2[0].style.display = "relative";
+        
+        e2[0].style.textAlign = "right"; 
+      
+      
+        let searchInput4 = getElements(frame, "html body form table tbody tr td");
+        searchInput4[0].style.color = "#006699";
+        searchInput4[0].style.fontWeight = "700";
+        searchInput4[0].style.fontSize= "0.9rem";
+      
+      }
+
     if (table.width == "100%" && table.getAttribute("bgcolor") == "#e4fbc5" && table.getAttribute("align") != "center") {
       table.classList.add("statusBar");
     }
@@ -473,4 +540,12 @@ function ResultadoBusca(){
       table.style.display = "none";
     }
   }
+
+  let btnPesquisa2 =  getElement(
+    frame,
+    "html body form table tbody tr td .botao"
+  );
+  
+  btnPesquisa2.addEventListener("click", () => setTimeout(ResultadoBusca, 2300));
+
 }
