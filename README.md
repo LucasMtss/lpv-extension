@@ -1,11 +1,5 @@
-# lpv-extension
+# Extensão para melhorar a interface do site da biblioteca Roberval Cardoso
 
-Extensão para melhorar a usabilidade do site da biblioteca do IF Sudeste Barbacena
+## Ao instalar e ativar o plugin, a interface do site será alterada com melhorias baseadas em pesquisas feitas pela turma de Linguagem de Programação Visual, estudando as modificações necessárias para melhorar a experiência do usuário
 
-## Instruções para o desenvolvimento
-
-### 1 - Na função <code>startPlugin</code>, obter o frame em que for trabalhar em <code>window.frames</code>
-
-### 2 - criar uma função separada para a parte do layout em que for estilizar
-
-### 3 - usar as funções <code>getElement</code> e <code>getElements</code> passando o frame e a query para obter o(s) elemento(s)
+## Apresentação do plugin: https://lucasmtss.github.io/lpv-extension/
