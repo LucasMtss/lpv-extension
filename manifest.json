@@ -5,8 +5,19 @@
   "description": "plugin para alterar a UI do site da biblioteca do IF Sudeste",
   "web_accessible_resources": [
     {
-      "resources": ["bg-image.png", "icon-menu.png", "logo-if.png", "styles.css","results.css"],
-      "matches": ["http://biblioteca.barbacena.ifsudestemg.edu.br/*"]
+      "resources": [
+        "bg-image.png",
+        "icon-menu.png",
+        "logo-if.png",
+        "styles.css",
+        "results.css",
+        "video-home.mp4",
+        "video-login.mp4"
+      ],
+      "matches": [
+        "http://biblioteca.barbacena.ifsudestemg.edu.br/*",
+        "https://www.loom.com/share/a7e54e4dbf614e6aaec4029a1c415f67"
+      ]
     }
   ],
   "content_scripts": [
