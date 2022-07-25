@@ -365,6 +365,7 @@ header {
   background-image: url("../assets/images/background.png");
   color: var(--primary-white);
   font-weight: 700;
+  margin-top: 1rem;
 }
 
 .download-section {
@@ -372,6 +373,7 @@ header {
   align-items: flex-start;
   justify-content: center;
   padding: 2rem 0;
+  margin: 3rem 0;
 }
 
 .download-section article {
