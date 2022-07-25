@@ -5,7 +5,13 @@
   "description": "plugin para alterar a UI do site da biblioteca do IF Sudeste",
   "web_accessible_resources": [
     {
-      "resources": ["bg-image.png", "icon-menu.png", "logo-if.png", "styles.css","results.css"],
+      "resources": [
+        "bg-image.png",
+        "logo-if.png",
+        "styles.css",
+        "results.css",
+        "script.js"
+      ],
       "matches": ["http://biblioteca.barbacena.ifsudestemg.edu.br/*"]
     }
   ],
@@ -18,5 +24,8 @@
         "http://biblioteca.barbacena.ifsudestemg.edu.br/cgi-bin/wxis.exe?IsisScript=phl82.xis&cipar=phl82.cip&lang=por"
       ]
     }
-  ]
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self';"
+  }
 }
